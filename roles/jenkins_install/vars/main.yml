@@ -1,0 +1,7 @@
+java:
+  version: "java-1.8.0-openjdk"
+  version_devel: "java-1.8.0-openjdk-devel"
+jen:
+  repo_url: "http://pkg.jenkins-ci.org/redhat/jenkins.repo"
+  gpg_key: "https://jenkins-ci.org/redhat/jenkins-ci.org.key"
+  java_options: "-Djava.awt.headless=true -Djenkins.install.runSetupWizard=false"
