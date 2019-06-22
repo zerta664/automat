@@ -1,0 +1,10 @@
+---
+requirements:
+  - "java-1.8.0-openjdk"
+  - "java-1.8.0-openjdk-devel"
+  - "openssh-server"
+  - "git"
+  - "net-tools"
+  - "wget"
+  - "lsof"
+  - "unzip"

@@ -1,0 +1,61 @@
+- name: "Install requirements"
+  package:
+    name: "{{ requirements }}"
+    state: present
+  register: status
+  retries: 10
+  delay: 2
+  until: status is success
+  become: True
+  when: (requirements | default([])) | length > 0
+
+- name: "Create jenkins group"
+  group:
+    name: "{{ slave_jenkins_username }}"
+    state: present
+  become: True
+
+- name: "Create jenkins user"
+  user:
+    name: "{{ slave_jenkins_username }}"
+    group: "{{ slave_jenkins_username }}"
+    password: "{{ slave_jenkins_password | password_hash('sha512', \
+               65534 | random(seed=inventory_hostname) | string) }}"
+    update_password: always
+    state: present
+    append: True
+    createhome: True
+  become: True
+
+- name: Download  Maven 
+  get_url: url=http://apache.claz.org/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz  dest=/tmp/apache-maven-3.6.1-bin.tar.gz
+
+- name: Untar Apache Maven 
+  shell: chdir=/tmp creates=/opt/apache-maven-3.6.1 tar -zxf apache-maven-3.6.1-bin.tar.gz -C /opt
+
+- name: Update PATH for mvn
+  shell: export PATH=/opt/apache-maven-3.6.1/bin:$PATH
+
+- name: "Load ssh key"
+  authorized_key:
+    user: "{{ slave_jenkins_username }}"
+    state: present
+    key: "{{ slave_jenkins_public_key }}"
+  become: True
+  when: slave_jenkins_public_key | trim
+
+- name: "Create slave home_dir"
+  file:
+    path: "{{ slave_home }}"
+    state: directory
+    owner: "{{ slave_jenkins_username }}"
+    group: "{{ slave_user_group }}"
+    mode: 0700
+  become: True
+
+- name: "Install slave jenkins agent"
+  jenkins_script:
+    validate_certs: False
+    timeout: 120
+    url: "{{ master_url }}"
+    script: "{{ lookup('template', 'slave.groovy.j2') }}"

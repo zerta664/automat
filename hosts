@@ -46,3 +46,6 @@
 
 [jenkins-test]
 94.130.215.190
+
+[jenkins-slave]
+95.216.49.202

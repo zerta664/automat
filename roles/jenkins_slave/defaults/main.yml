@@ -1,0 +1,19 @@
+# master
+
+master_host: "{{ ansible_host }}"
+master_port: 8080
+master_url: "http://{{ master_host }}:{{ master_port }}"
+
+# slave
+slave_agent_name: agent
+slave_executors_num: 1
+slave_host: "{{ ansible_host }}"
+slave_ssh_port: 22
+slave_home: /home/jenkins
+slave_jenkins_cred_id: ci_slave
+slave_jenkins_username: jenkins
+slave_jenkins_password: password
+slave_jenkins_public_key: ""
+slave_user_group: jenkins
+slave_labels:
+  - my_slave

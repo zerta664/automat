@@ -1,0 +1,88 @@
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+  disableRememberMe: false
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  numExecutors: 2
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: false
+  scmCheckoutRetryCount: 0
+  slaveAgentPort: 0
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://updates.jenkins.io/update-center.json"
+  views:
+  - all:
+      name: "all"
+  viewsTabBar: "standard"
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  downloadSettings:
+    useBrowser: false
+  sSHD:
+    port: -1
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "git"
+  jdk:
+    defaultProperties:
+    - installSource:
+        installers:
+        - jdkInstaller:
+            acceptLicense: false
+    installations:
+    - home: "/usr/lib/jvm/java-1.8.0-openjdk"
+      name: "jdk8"
+  maven:
+    installations:
+    - name: "maven"
+      properties:
+      - installSource:
+          installers:
+          - maven:
+              id: "3.6.1"
+jobs:
+  - script: >
+      pipelineJob('java') {
+          definition {
+              cpsScm {
+                  scriptPath 'Jenkinsfile'
+                  scm {
+                    git {
+                        remote { url 'https://github.com/zerta664/jenkins.git' }
+                        branch '*/master'
+                        extensions {}
+                    }
+                 }
+               
+              }
+          }
+      }
+    
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - basicSSHUserPrivateKey:
+          description: "key for jenkins_slave"
+          id: "5"
+          privateKeySource:
+            directEntry:
+              privateKey: "{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}"
+          scope: GLOBAL
+          username: "jenkins"
+

@@ -1,0 +1,8 @@
+- name: Copy configuration files
+  copy:
+    src: "{{ role_path }}/files/jenkins.yaml"
+    dest: /var/lib/jenkins/jenkins.yaml
+    mode: '0644'
+    owner: jenkins
+    group: jenkins
+  notify: Restart Jenkins

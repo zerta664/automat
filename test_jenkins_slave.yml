@@ -1,0 +1,11 @@
+- name: "Install & configure jenkins_slave"
+  hosts: jenkins-slave
+
+  vars:
+    master_host: 94.130.215.190
+    slave_jenkins_cred_id: 5
+    slave_jenkins_username: jenkins
+    slave_jenkins_public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOks0DPmMRAzHBQ3iKwJhL1dh6Vsjgj4CSounwZjEok3qQ7NRf+OPw7pai/rOuUgxqtcd5A6oX9FDV4LdGgquEE//9oqlHY9nt6lpCnb4upshkcQA0cZomX5xi+yxgBDqVGFfRmjBEQlY6bKjdNX8ahJXjDzNNy+xjTuHZUpcz7orXJSR4KrhvPGQf69dMeTYpznr3Coiz10AtH75OmafZk0y2X8B06V/RazdvWpKhAnbJh4c/20+d3uJoqFr+AirzFJpEIa2ejPDsOpcTRVD2BXMVdYXpcRkiWYNv8WcqvwTuNMip5yCDTwxOUHslFs6x1fO2oyVdePn+pQ0lgETp
+
+  roles:
+    - role: jenkins_slave
