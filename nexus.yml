@@ -1,0 +1,31 @@
+- name: Nexus configuration
+  hosts: jenkins-test
+  become: yes
+
+  vars:
+    nexus_version: '3.5.0-02'
+    nexus_admin_password: "jmFiRpYA9Dw1"
+    nexus_local_users:
+      - username: jenkins # used as key to update
+        first_name: Jenkins
+        last_name: CI
+        email: zerta664@gmail.com
+        password: "jmFiRpYA9Dw"
+        roles:
+          - Developpers # role ID here
+    nexus_repos_maven_proxy:
+      - name: central
+        remote_url: 'https://repo1.maven.org/maven2/'
+        layout_policy: permissive
+    nexus_repos_maven_hosted:
+      - name: company-project
+        version_policy: mixed
+        write_policy: allow
+        blob_store: my-artifacts
+    nexus_repos_maven_group:
+      - name: public
+        member_repos:
+          - central
+
+  roles:
+    - role: nexus_role
