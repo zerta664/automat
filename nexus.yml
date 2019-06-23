@@ -4,13 +4,13 @@
 
   vars:
     nexus_version: '3.5.0-02'
-    nexus_admin_password: "jmFiRpYA9Dw1"
+    nexus_admin_password: "your_pass"
     nexus_local_users:
       - username: jenkins # used as key to update
         first_name: Jenkins
         last_name: CI
-        email: zerta664@gmail.com
-        password: "jmFiRpYA9Dw"
+        email: test@gmail.com
+        password: "your_pass"
         roles:
           - Developpers # role ID here
     nexus_repos_maven_proxy:
