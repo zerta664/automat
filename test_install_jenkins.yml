@@ -1,6 +1,0 @@
-- name: Innstall-jenkins-with-plugin and configure
-  hosts: jenkins-test
-  gather_facts: true
-  roles:
-    - jenkins_install
-    - jenkins_config
