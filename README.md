@@ -7,7 +7,7 @@ These roles install and configure Jenkins(JCasC) , Jenkins slave node, Nexus Rep
 
 Ansible variables, which must be changed
 
-# file nexus.yml
+# in file nexus.yml
  
   nexus_admin_password: "your_pass_for_nexus_admin"
   nexus_local_users:
@@ -15,7 +15,7 @@ Ansible variables, which must be changed
         password: "your_pass_for_local_nexus_user"
 
 
-# file roles/jenkins_config/files/jenkins.yaml
+# in file roles/jenkins_config/files/jenkins.yaml
    
    id: "admin"
      password: "your_pass_for_admin_jemkins"
@@ -32,10 +32,11 @@ Ansible variables, which must be changed
     username: "admin"
     password: "your_pass_for nexus_admin"
    
-   # file jenkins_slave.yml
+   # in  file jenkins_slave.yml
     master_host: your_master_host
     slave_jenkins_username: jenkins
     slave_jenkins_public_key: your_public_key
 
-# file hosts
+# in file hosts
+ your_hosts
 
