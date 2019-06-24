@@ -42,10 +42,10 @@
 
 ## db-[99:101]-node.example.com
 
-#95.216.49.204
+
 
 [jenkins-test]
-94.130.215.190
+your_master_ip
 
 [jenkins-slave]
-95.216.49.202
+your_slave_ip
