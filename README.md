@@ -17,8 +17,8 @@ Ansible variables, which must be changed
 
 # in file roles/jenkins_config/files/jenkins.yaml
    
-   id: "admin"
-     password: "your_pass_for_admin_jemkins"
+    id: "admin"
+    password: "your_pass_for_admin_jemkins"
   
 
     description: "key for jenkins_slave"
