@@ -20,3 +20,6 @@ jenkins_plugins:
   - pipeline-maven
   - workflow-job
   - nexus-platform 
+  - role-strategy
+  - nexus-jenkins-plugin
+  - nexus-artifact-uploader

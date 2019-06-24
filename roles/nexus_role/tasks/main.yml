@@ -1,6 +1,6 @@
 ---
 
-#- include: delete_nexus.yml
+- include: delete_nexus.yml
 
 - include: install_nexus.yml
 

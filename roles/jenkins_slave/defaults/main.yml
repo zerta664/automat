@@ -3,6 +3,8 @@
 master_host: "{{ ansible_host }}"
 master_port: 8080
 master_url: "http://{{ master_host }}:{{ master_port }}"
+master_username: admin
+master_password: test
 
 # slave
 slave_agent_name: agent

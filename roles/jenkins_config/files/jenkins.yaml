@@ -2,37 +2,31 @@ jenkins:
   agentProtocols:
   - "JNLP4-connect"
   - "Ping"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
   disableRememberMe: false
-  markupFormatter: "plainText"
   mode: NORMAL
-  myViewsTabBar: "standard"
   numExecutors: 2
   primaryView:
     all:
       name: "all"
-  projectNamingStrategy: "standard"
   quietPeriod: 5
-  remotingSecurity:
-    enabled: false
   scmCheckoutRetryCount: 0
-  slaveAgentPort: 0
-  updateCenter:
-    sites:
-    - id: "default"
-      url: "https://updates.jenkins.io/update-center.json"
+  securityRealm: # (2)
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: "admin"
+        password: "a5abN5GTzk@qwe1"
+  slaveAgentPort: 50000
   views:
   - all:
       name: "all"
-  viewsTabBar: "standard"
-security:
-  apiToken:
-    creationOfLegacyTokenEnabled: false
-    tokenGenerationOnCreationEnabled: false
-    usageStatisticsEnabled: true
-  downloadSettings:
-    useBrowser: false
-  sSHD:
-    port: -1
 tool:
   git:
     installations:
@@ -80,8 +74,55 @@ credentials:
       - basicSSHUserPrivateKey:
           description: "key for jenkins_slave"
           id: "5"
+          username: jenkins
           privateKeySource:
             directEntry:
-              privateKey: "{your_private_key}"
-              username: "jenkins"
+              privateKey: |-
+                -----BEGIN RSA PRIVATE KEY-----
+                MIIEpQIBAAKCAQEA6pbQTNLcv5I93WXzYbpw3nh7HudAsTjuptKAtV5JHlZ4thgt
+                qYj0+MfOQ/+2JPIik9p7AJJrzQHtw8DBpHhvhtpEy302PV7sw66I7+wo0AHC7Cge
+                tmsIT1LlSqp8PrL9C1lkgjmF0lSISA4adU6v3DlNYRyTuTlXaK06Phw6GMyegmFu
+                RSf9hZFbnlMzAYArToObPhW3ZNwxeoBnoGRk62LZH/SIyNaNq0dpStqQFsNPdgk0
+                13Fzc36IgK7+vVRFRiat1DmjCzVkjuJ7alG1m8BJD3nrPFdHFTr/ZPDB3P1shuZ6
+                X+gslfrIrAPdUcj8Ii6KedT6AWwyBK9C4vse1wIDAQABAoIBAEAQ0+5HH/ZJkA+o
+                yiEEc9KuAKHd8fL0Y2i30GK3zywz3V+NltrYBl7y4kf7y9inL/5FCpaLZllkj3SI
+                bdnm8j5X2bXhCjEUfYCrZ8ZuLm8wK/Wmt0yGSoyvTONpT+knpKe20BYoc32PjHBx
+                OZST2r8//vvofAd3u4Fg3akcuFkQ8sYlooMy87m92RoUEZAtWxBpstUkD6QcX5ZM
+                gOvDWDNU4wIhZft0VA6EeRtlEpD7lkaQ0pzYr3tt1eZQ0ndez24/ChLVZ2s4mwHe
+                EjOqoQF77kxM8C/xi00Jt4dQ4d4Io4gKBaxFM1JvBW+rSXpJZtujeRLqjeZujZHZ
+                +1VnEjECgYEA/MsZZhjaXFjj1u4i0LV3MPDVy0Q5ycvxorXbkH1NkQcWjF8GHLe7
+                Ae/nyriF/Sz1p2ZRhdM8N/aDl4llrBfiW15o4cKY0P951Vz3NliK/zx4hN+Ux0W4
+                1mWQ/peV3QMQa2NZpito8aFu+Ja3qtJmrEhTBpJLNF+WBx5Gocj/YF0CgYEA7ZCZ
+                dyA9Kue2qQxXscqFJCnVPjaxQ7qr+IuoirJRgBCfZaB1A6tZg70VE30LZh1Zo5Fn
+                ZZaRrx0+bwhpUodych1QkqD0WRaho3hj37+xMM59PDAxK3IWry7kNZhXW8FubTu6
+                odMi7Dw6r793uFM7RrXsRLxRqbK1Pc2c/a5cGMMCgYEAwg4S6Eopzfw6orJZrYew
+                ALTQGeK8zckuK+6YpxlZYvxi9cy4P3FXMEx+ziLKUKijxyaHbEjUkE0/hSNnFi2b
+                iPI3Zx7f+ogzeXONHn3n7bj4918+sZ43HvYG0TmCRI/mmdlBZ4spW1vGeTQRuCMd
+                yCEZAxFog8Lgw4QdSnKmf80CgYEAoUhTOBH2FQPc+aW8f6K7g1K3SBZ/gDjiecnu
+                8cKgHC6s2KT37DbPfeXHwkRZkckJS0fzB4AShe13ro/qWTJFm32VbwbA/R6lPEMG
+                oygUFsuJMGyTZSh+iA5wtoYngM6wto4fZa/e/LzjJt/5WnV/P8FQl1W2p1wBOeU2
+                2O8f7VsCgYEA6sgctHCG9JtFPgexYYImZMdDSKLHX8W/C4i4cpouVY2rPNPT64fm
+                tB8eQ84n/N85rABprMIMdPVrovMk6vaOo+hDzlRcmaiOWoR9C0RIRSwEygbDAVG+
+                QzeguDJfT8Yw02aQQkWHWkE1Dxw/7f2dmY7ugPIQUQI2dUdrqb0YdLM=
+                -----END RSA PRIVATE KEY-----
 
+      - usernamePassword:
+          description: "nexus-user"
+          id: "7"
+          username: "admin"
+          password: "jmFiRpYA9Dw1"
+          scope: GLOBAL
+          
+unclassified:
+  gitSCM:
+    createAccountBasedOnEmail: false
+  globalNexusConfiguration:
+    hideNvsMessage: false
+    instanceId: "b381ca5dc2c441b1b263114f6afea94d"
+    nxrmConfigs:
+    - nxrm3Configuration:
+        credentialsId: "7"
+        displayName: "Local Nexus"
+        id: "LocalHexus"
+        internalId: "e8ec1dc7-073d-40e4-9795-f34130977d41"
+        serverUrl: "http://127.0.0.1:8081"
