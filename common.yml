@@ -1,9 +1,9 @@
 ---
 
-- include: jenkins_install.yml
+- import_playbook: jenkins_install.yml
 
-- include: nexus.yml
+- import_playbook: nexus.yml
 
-- include: jenkins_configure.yml
+- import_playbook: jenkins_configure.yml
 
-- include: jenkins_slave.yml
+- import_playbook: jenkins_slave.yml
