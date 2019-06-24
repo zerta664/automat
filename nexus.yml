@@ -3,7 +3,7 @@
   become: yes
 
   vars:
-    nexus_version: '3.5.0-02'
+    nexus_version: '3.16.2-01'
     nexus_admin_password: "your_pass"
     nexus_local_users:
       - username: jenkins # used as key to update
@@ -21,7 +21,7 @@
       - name: company-project
         version_policy: mixed
         write_policy: allow
-        blob_store: my-artifacts
+        blob_store: default
     nexus_repos_maven_group:
       - name: public
         member_repos:
