@@ -21,7 +21,7 @@ file roles/jenkins_config/files/jenkins.yaml
      password: "your_pass_for_admin_jemkins"
   
 
-   description: "key for jenkins_slave"
+    description: "key for jenkins_slave"
           id: "5"
           username: jenkins
           privateKeySource:
@@ -29,7 +29,13 @@ file roles/jenkins_config/files/jenkins.yaml
               privateKey: |- "your private_key for slave"
 
 
-   username: "admin"
-   password: "your_pass_for nexus_admin"
+    username: "admin"
+    password: "your_pass_for nexus_admin"
+   
+   file jenkins_slave.yml
+       master_host: your_master_host
+       slave_jenkins_cred_id: 5
+       slave_jenkins_username: jenkins
+       slave_jenkins_public_key: your_public_key
 
 
