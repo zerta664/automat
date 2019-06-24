@@ -1,0 +1,9 @@
+---
+
+- include: jenkins_install.yml
+
+- include: nexus.yml
+
+- include: jenkins_configure.yml
+
+- include: jenkins_slave.yml

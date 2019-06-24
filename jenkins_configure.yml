@@ -1,0 +1,5 @@
+- name: Configure Jenkins with user, jobs, nexus
+  hosts: jenkins-test
+  gather_facts: true
+  roles:
+    - jenkins_config
